@@ -1,0 +1,137 @@
+{
+  "notice": {
+    "show": false,
+    "text": ""
+  },
+  "phone": "(830) 459-4442",
+  "email": "",
+  "hero": {
+    "headline": "Hill Country Electrical Work,",
+    "headlineAccent": "Done Right",
+    "intro": "New homes, panel and breaker work, EV chargers, hot tubs and everyday repairs. Owner Troy Perkins and his crew show up fast, keep you in the loop, and don't leave until you're 100% satisfied.",
+    "image": "media/hero-electric.jpg"
+  },
+  "highlights": [
+    "5-star Google reviews",
+    "Owner on the job",
+    "Same-day service when available"
+  ],
+  "heroCards": [
+    {
+      "icon": "timer",
+      "title": "Fast response",
+      "text": "Customers mention same-day visits, even in a freeze with the heat out."
+    },
+    {
+      "icon": "house-plus",
+      "title": "New builds to small fixes",
+      "text": "Full wiring for new homes, or a single switch moved across the room."
+    },
+    {
+      "icon": "messages-square",
+      "title": "Clear communication",
+      "text": "You'll know who's coming, what's wrong, and what it costs before we start."
+    }
+  ],
+  "hours": [
+    {
+      "label": "Monday – Friday",
+      "days": [
+        "Monday",
+        "Tuesday",
+        "Wednesday",
+        "Thursday",
+        "Friday"
+      ],
+      "opens": "",
+      "closes": "",
+      "display": "Call to schedule"
+    },
+    {
+      "label": "Weekends",
+      "days": [
+        "Saturday",
+        "Sunday"
+      ],
+      "opens": "",
+      "closes": "",
+      "display": "Call to ask"
+    }
+  ],
+  "services": [
+    {
+      "title": "New Construction Wiring",
+      "icon": "house-plus",
+      "description": "Complete electrical for new homes and additions, coordinated with your builder from rough-in to final.",
+      "features": [
+        "New homes & additions",
+        "Rough-in through final",
+        "Builder coordination"
+      ]
+    },
+    {
+      "title": "Panels & Breakers",
+      "icon": "zap",
+      "description": "Breakers that trip or fail, worn-out panels, and capacity upgrades for new equipment.",
+      "features": [
+        "Breaker replacement",
+        "Panel upgrades",
+        "HVAC & appliance circuits"
+      ]
+    },
+    {
+      "title": "EV Charger Installation",
+      "icon": "plug-zap",
+      "description": "Level 2 home chargers installed on a dedicated circuit, sized to your panel and your vehicle.",
+      "features": [
+        "Level 2 home chargers",
+        "Dedicated 240V circuits",
+        "Load check on your panel"
+      ]
+    },
+    {
+      "title": "Hot Tubs & Spas",
+      "icon": "waves",
+      "description": "The dedicated circuit, disconnect and GFCI protection a new hot tub needs, installed safely.",
+      "features": [
+        "Hot tub & spa circuits",
+        "Outdoor disconnects",
+        "GFCI protection"
+      ]
+    },
+    {
+      "title": "Switches, Outlets & Lighting",
+      "icon": "lightbulb",
+      "description": "Add, move or replace switches, outlets and fixtures, inside and out.",
+      "features": [
+        "Switch & outlet relocation",
+        "Fixtures & ceiling fans",
+        "Outdoor & security lighting"
+      ]
+    },
+    {
+      "title": "Troubleshooting & Repairs",
+      "icon": "wrench",
+      "description": "Dead circuits, flickering lights or something that just isn't right: we find the cause and fix it.",
+      "features": [
+        "Fault finding",
+        "Same-day when available",
+        "Data & conduit runs"
+      ]
+    }
+  ],
+  "reviews": [
+    {
+      "name": "Edgar R.",
+      "text": "An electrician came out the same day to diagnose and replace a faulty breaker for an HVAC unit. The temperatures have been freezing or close to freezing. I really appreciate their prompt response time and professionalism."
+    },
+    {
+      "name": "Raina M.",
+      "text": "We had a wonderful experience with Perkins Electric throughout the build of our new home. Communication was always great whenever we saw or spoke with Troy, Roger, and Jesus from the Perkins crew at the build."
+    },
+    {
+      "name": "Shelly W.",
+      "text": "I've used Perkins Electric for 2 years for everything from light switch relocation to installing an EV charger to installing electrical for a new hot tub."
+    }
+  ]
+}

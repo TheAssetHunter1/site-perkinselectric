@@ -1,0 +1,32 @@
+---
+import Icon from "./Icon.astro";
+import site from "../data";
+---
+<section id="reviews" class="py-20">
+  <div class="container">
+    <div class="text-center mb-12">
+      <div class="flex justify-center gap-1 mb-3 text-accent">
+        {[1, 2, 3, 4, 5].map(() => <Icon name="star" class="h-6 w-6 fill-current" />)}
+      </div>
+      <h2 class="text-4xl font-bold text-foreground mb-3">What Customers Say</h2>
+      <p class="text-xl text-muted-foreground max-w-2xl mx-auto">Real Google reviews from Hill Country customers of Troy Perkins and his crew.</p>
+    </div>
+
+    <div class="grid md:grid-cols-3 gap-6 mb-10">
+      {site.reviews.map((r) => (
+        <figure class="card p-6 bg-gradient-card shadow-card-tech border border-border flex flex-col">
+          <Icon name="quote" class="h-8 w-8 text-accent mb-4" />
+          <blockquote class="text-foreground/90 flex-1">"{r.text}"</blockquote>
+          <figcaption class="mt-5 flex items-center justify-between">
+            <span class="font-semibold text-primary">{r.name}</span>
+            <span class="flex gap-0.5 text-accent">{[1, 2, 3, 4, 5].map(() => <Icon name="star" class="h-4 w-4 fill-current" />)}</span>
+          </figcaption>
+        </figure>
+      ))}
+    </div>
+
+    <div class="text-center">
+      <a href={site.googleReviewsUrl} target="_blank" rel="noopener" class="btn border border-primary text-primary hover:bg-primary hover:text-primary-foreground">Read all reviews on Google</a>
+    </div>
+  </div>
+</section>

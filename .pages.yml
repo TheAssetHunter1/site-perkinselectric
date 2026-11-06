@@ -1,0 +1,149 @@
+# Pages CMS configuration (https://pagescms.org)
+# This is what the client sees when they log in to edit the website.
+# Only src/data/content.json and the images folder are editable; layout and settings are locked.
+
+media:
+  input: src/assets/media
+  output: media
+  categories: [image]
+
+content:
+  - name: website
+    label: Website content
+    type: file
+    path: src/data/content.json
+    format: json
+    fields:
+      - name: notice
+        label: Announcement bar
+        description: A colored bar across the top of the homepage. Use it for holiday hours, closures, or specials.
+        type: object
+        fields:
+          - name: show
+            label: Show the announcement
+            type: boolean
+          - name: text
+            label: Announcement text
+            type: string
+
+      - name: phone
+        label: Phone number
+        description: Shown in the header, contact section and footer. Example (830) 928-5015
+        type: string
+        required: true
+
+      - name: email
+        label: Email address
+        description: Leave blank to hide it.
+        type: string
+
+      - name: hero
+        label: Top of the homepage
+        type: object
+        fields:
+          - name: headline
+            label: Headline (first line, white)
+            type: string
+            required: true
+          - name: headlineAccent
+            label: Headline (second line, gold)
+            type: string
+          - name: intro
+            label: Intro paragraph
+            type: text
+          - name: image
+            label: Background photo
+            description: Wide landscape photo, at least 1920 pixels wide. It is shown behind a dark blue tint.
+            type: image
+
+      - name: highlights
+        label: Highlights under the buttons
+        description: Three short points, e.g. "Licensed electrician"
+        type: string
+        list: { min: 1, max: 3 }
+
+      - name: heroCards
+        label: Three boxes beside the headline
+        type: object
+        list: { min: 1, max: 3 }
+        fields:
+          - name: title
+            label: Title
+            type: string
+            required: true
+          - name: text
+            label: Text
+            type: text
+          - name: icon
+            label: Icon
+            type: select
+            options:
+              values: [timer, house, badge-check, zap, shield-check, wrench, star, clock, lightbulb]
+
+      - name: hours
+        label: Business hours
+        type: object
+        list: true
+        fields:
+          - name: label
+            label: Day(s) as shown on the site
+            description: e.g. "Monday – Thursday"
+            type: string
+            required: true
+          - name: display
+            label: Hours as shown on the site
+            description: e.g. "9:00am to 5:00pm" or "Closed"
+            type: string
+            required: true
+          - name: days
+            label: Days this row covers (for Google)
+            type: select
+            list: true
+            options:
+              values: [Monday, Tuesday, Wednesday, Thursday, Friday, Saturday, Sunday]
+          - name: opens
+            label: Opens (for Google, 24-hour time)
+            description: e.g. 09:00. Leave empty if closed.
+            type: string
+          - name: closes
+            label: Closes (for Google, 24-hour time)
+            description: e.g. 17:00. Leave empty if closed.
+            type: string
+
+      - name: services
+        label: Services
+        type: object
+        list: true
+        fields:
+          - name: title
+            label: Service name
+            type: string
+            required: true
+          - name: icon
+            label: Icon
+            type: select
+            options:
+              values: [lightbulb, toggle-right, plug, zap, shield-check, clipboard-check, wrench, house, building-2, fan, sun, cable, battery-charging, car, timer]
+          - name: description
+            label: Short description
+            type: text
+            required: true
+          - name: features
+            label: Bullet points
+            type: string
+            list: true
+
+      - name: reviews
+        label: Customer reviews
+        description: Copy reviews word for word from Google, with the customer's first name and last initial.
+        type: object
+        list: { min: 1, max: 6 }
+        fields:
+          - name: name
+            label: Customer name
+            type: string
+            required: true
+          - name: text
+            label: Review text
+            type: text
+            required: true

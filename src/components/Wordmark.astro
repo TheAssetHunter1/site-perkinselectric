@@ -1,0 +1,12 @@
+---
+import Icon from "./Icon.astro";
+import site from "../data";
+interface Props { dark?: boolean }
+const { dark = false } = Astro.props;
+---
+<span class="flex items-center gap-2 font-extrabold tracking-tight text-xl leading-none">
+  <span class="grid place-items-center h-9 w-9 rounded-lg bg-accent-glow text-accent-foreground shadow-sm">
+    <Icon name={site.wordmark.icon} class="h-5 w-5" />
+  </span>
+  <span class={dark ? "text-white" : "text-primary"}>{site.wordmark.first}<span class="text-accent"> {site.wordmark.second}</span></span>
+</span>

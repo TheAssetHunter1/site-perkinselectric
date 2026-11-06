@@ -1,0 +1,63 @@
+---
+import Icon from "./Icon.astro";
+import site from "../data";
+import Wordmark from "./Wordmark.astro";
+const tel = `tel:${site.phone.replace(/\D/g, "")}`;
+const year = new Date().getFullYear();
+const footerServices = site.services.slice(0, 5);
+---
+<footer class="bg-primary text-white/80">
+  <div class="container py-12">
+    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+      <div class="space-y-4">
+        <Wordmark dark />
+        <p class="text-white/75 text-sm">
+          Electrician serving {site.address.city} and the Hill Country. Owned by Troy Perkins. Fast response and work done right.
+        </p>
+      </div>
+
+      <div class="space-y-4">
+        <h2 class="font-semibold text-white">Services</h2>
+        <ul class="space-y-2 text-sm text-white/75">
+          {footerServices.map((s) => (
+            <li><a href="#services" class="hover:text-accent transition-colors">{s.title}</a></li>
+          ))}
+        </ul>
+      </div>
+
+      <div class="space-y-4">
+        <h2 class="font-semibold text-white">Contact Info</h2>
+        <div class="space-y-3 text-sm">
+          <a href={tel} class="flex items-center gap-2 text-white/75 hover:text-accent transition-colors">
+            <Icon name="phone" class="h-4 w-4 text-accent shrink-0" /><span>{site.phone}</span>
+          </a>
+          {site.email && (
+            <a href={`mailto:${site.email}`} class="flex items-center gap-2 hover:text-accent transition-colors">
+              <Icon name="mail" class="h-4 w-4 text-accent shrink-0" /><span>{site.email}</span>
+            </a>
+          )}
+          <p class="flex items-center gap-2">
+            <Icon name="map-pin" class="h-4 w-4 text-accent shrink-0" />
+            <span>{site.address.city}, {site.address.state} &amp; surrounding areas</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="space-y-4">
+        <h2 class="font-semibold text-white">Hours</h2>
+        <dl class="space-y-2 text-sm text-white/75">
+          {site.hours.map((h) => (
+            <div class="flex justify-between gap-4">
+              <dt>{h.label}:</dt>
+              <dd>{h.display}</dd>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </div>
+
+    <div class="border-t border-white/15 mt-8 pt-8 text-center">
+      <p class="text-sm text-white/60">© {year} {site.name}. All rights reserved.</p>
+    </div>
+  </div>
+</footer>

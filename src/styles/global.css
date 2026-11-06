@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+/* Brand design tokens */
+@theme {
+  --color-background: hsl(0 0% 100%);
+  --color-foreground: hsl(222 47% 11%);
+  --color-card: hsl(0 0% 100%);
+  --color-card-foreground: hsl(222.2 84% 4.9%);
+  --color-primary: hsl(215 19% 17%);
+  --color-primary-foreground: hsl(0 0% 100%);
+  --color-primary-glow: hsl(215 16% 30%);
+  --color-secondary: hsl(220 14% 96%);
+  --color-secondary-foreground: hsl(222.2 47.4% 11.2%);
+  --color-muted: hsl(220 14% 96%);
+  --color-muted-foreground: hsl(215.4 16.3% 46.9%);
+  --color-accent: hsl(2 80% 52%);
+  --color-accent-foreground: hsl(0 0% 100%);
+  --color-destructive: hsl(0 84.2% 60.2%);
+  --color-border: hsl(214.3 31.8% 91.4%);
+  --color-input: hsl(214.3 31.8% 91.4%);
+  --color-ring: hsl(2 80% 52%);
+
+  --radius-lg: 0.75rem;
+  --radius-md: calc(0.75rem - 2px);
+  --radius-sm: calc(0.75rem - 4px);
+
+  --shadow-tech: 0 10px 30px -10px hsl(215 19% 17% / 0.35);
+  --shadow-card-tech: 0 4px 20px -4px hsl(215 19% 17% / 0.12);
+
+  --font-sans: ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+
+@utility bg-gradient-primary {
+  background-image: linear-gradient(135deg, var(--color-primary), var(--color-primary-glow));
+}
+@utility bg-gradient-hero {
+  background-image: linear-gradient(135deg, hsl(215 25% 8% / 0.95), hsl(215 19% 18% / 0.80));
+}
+@utility bg-accent-glow {
+  background-image: linear-gradient(135deg, hsl(4 85% 56%), hsl(356 78% 44%));
+}
+@utility bg-gradient-card {
+  background-image: linear-gradient(180deg, hsl(0 0% 100%), hsl(220 14% 98%));
+}
+
+/* Centered page container, capped at 1400px. */
+@utility container {
+  width: 100%;
+  margin-inline: auto;
+  padding-inline: 1rem;
+  @media (width >= 640px) { max-width: 640px; }
+  @media (width >= 768px) { max-width: 768px; }
+  @media (width >= 1024px) { max-width: 1024px; }
+  @media (width >= 1280px) { max-width: 1280px; }
+  @media (width >= 1536px) { max-width: 1400px; }
+}
+
+@layer base {
+  *, ::before, ::after { border-color: var(--color-border); }
+  html { scroll-behavior: smooth; }
+  body { background: var(--color-background); color: var(--color-foreground); }
+  section[id] { scroll-margin-top: 4rem; }
+  button, [role="button"] { cursor: pointer; }
+}
+
+/* Shared UI pieces: buttons, cards, form fields */
+@layer components {
+  .btn {
+    display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem;
+    white-space: nowrap; border-radius: var(--radius-md); font-size: 0.875rem; line-height: 1.25rem;
+    font-weight: 500; transition: color .15s, background-color .15s, opacity .15s, border-color .15s;
+    height: 2.5rem; padding: 0.5rem 1rem;
+  }
+  .btn:focus-visible { outline: 2px solid var(--color-ring); outline-offset: 2px; }
+  .btn svg { width: 1rem; height: 1rem; flex-shrink: 0; pointer-events: none; }
+  .btn-sm { height: 2.25rem; padding: 0 0.75rem; }
+  .btn-lg { height: 2.75rem; padding: 0 2rem; }
+  .card { border-radius: var(--radius-lg); background-color: var(--color-card); color: var(--color-card-foreground); }
+  .card-header { display: flex; flex-direction: column; gap: 0.375rem; padding: 1.5rem; }
+  .card-title { font-size: 1.5rem; font-weight: 600; line-height: 1; letter-spacing: -0.025em; }
+  .card-description { font-size: 0.875rem; line-height: 1.25rem; color: var(--color-muted-foreground); }
+  .card-content { padding: 0 1.5rem 1.5rem; }
+  .field {
+    display: flex; width: 100%; border-radius: var(--radius-md); border: 1px solid var(--color-input);
+    background: var(--color-background); padding: 0.5rem 0.75rem; font-size: 0.875rem; line-height: 1.25rem;
+  }
+  .field:focus-visible { outline: 2px solid var(--color-ring); outline-offset: 2px; }
+  .field::placeholder { color: var(--color-muted-foreground); }
+  .label { font-size: 0.875rem; font-weight: 500; line-height: 1; }
+}

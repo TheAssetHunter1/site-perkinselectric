@@ -1,0 +1,10 @@
+---
+// Announcement bar the client can turn on in the editor (holiday hours, closures, specials).
+import site from "../data";
+const { show, text } = site.notice;
+---
+{show && text.trim() && (
+  <div class="bg-primary text-primary-foreground text-center text-sm font-medium px-4 py-2" role="status">
+    {text}
+  </div>
+)}

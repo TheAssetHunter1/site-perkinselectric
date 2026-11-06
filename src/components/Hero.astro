@@ -1,0 +1,68 @@
+---
+import { Image } from "astro:assets";
+import Icon from "./Icon.astro";
+import site, { mediaImage } from "../data";
+
+const heroImage = mediaImage(site.hero.image);
+const tel = `tel:${site.phone.replace(/\D/g, "")}`;
+const highlightIcons = ["star", "badge-check", "zap"];
+---
+<section class="relative flex items-center overflow-hidden bg-primary lg:min-h-[calc(100vh-4rem)]">
+  <Image
+    src={heroImage}
+    alt=""
+    widths={[768, 1280, 1920]}
+    sizes="100vw"
+    loading="eager"
+    fetchpriority="high"
+    class="absolute inset-0 h-full w-full object-cover"
+  />
+  <div class="absolute inset-0 bg-gradient-hero"></div>
+
+  <div class="container relative z-10 py-16 lg:py-24">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <div class="text-center lg:text-left text-white">
+        <p class="inline-flex items-center gap-2 rounded-full bg-white/10 border border-white/20 px-4 py-1.5 text-sm mb-6">
+          <Icon name="map-pin" class="h-4 w-4 text-accent" />Serving Kerrville &amp; the Hill Country
+        </p>
+        <h1 class="text-4xl md:text-6xl font-extrabold mb-6 leading-tight tracking-tight">
+          {site.hero.headline}
+          <span class="text-accent block">{site.hero.headlineAccent}</span>
+          <span class="sr-only"> in {site.address.city}, {site.address.state}</span>
+        </h1>
+
+        <p class="text-lg md:text-xl text-white/85 mb-8 max-w-xl mx-auto lg:mx-0">{site.hero.intro}</p>
+
+        <div class="flex flex-col sm:flex-row gap-4 mb-8 justify-center lg:justify-start">
+          <a href={tel} class="btn btn-lg text-lg font-semibold bg-accent-glow text-accent-foreground hover:opacity-90 shadow-lg">
+            <Icon name="phone" />Call {site.phone}
+          </a>
+          <a href="#contact" class="btn btn-lg text-lg border border-white/40 text-white hover:bg-white hover:text-primary">Request a Quote</a>
+        </div>
+
+        <ul class="flex flex-wrap gap-x-6 gap-y-3 text-sm text-white/85 justify-center lg:justify-start">
+          {site.highlights.map((h, i) => (
+            <li class="flex items-center gap-2">
+              <Icon name={highlightIcons[i] ?? "circle-check"} class="h-5 w-5 text-accent" />
+              <span>{h}</span>
+            </li>
+          ))}
+        </ul>
+      </div>
+
+      <div id="about" class="space-y-4">
+        {site.heroCards.map((c) => (
+          <div class="card p-6 bg-white/95 shadow-xl">
+            <div class="flex items-start gap-4">
+              <div class="bg-accent/15 p-3 rounded-lg"><Icon name={c.icon} class="h-6 w-6 text-primary" /></div>
+              <div>
+                <h2 class="font-semibold text-lg mb-1 text-primary">{c.title}</h2>
+                <p class="text-muted-foreground">{c.text}</p>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </div>
+</section>

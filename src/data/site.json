@@ -1,0 +1,38 @@
+{
+  "name": "Perkins Electric",
+  "wordmark": {
+    "first": "Perkins",
+    "second": "Electric",
+    "icon": "zap"
+  },
+  "url": "https://site-perkinselectric.pages.dev",
+  "tagline": "Electrician in Kerrville, TX",
+  "description": "Perkins Electric is a Kerrville, TX electrician owned by Troy Perkins: new-home wiring, panels and breakers, EV chargers, hot tub and spa circuits, switches, outlets and lighting for Hill Country homes and businesses.",
+  "owner": "Troy Perkins",
+  "demo": true,
+  "address": {
+    "street": "2640 Junction Hwy Ste B",
+    "streetDisplay": "2640 Junction Hwy, Ste B",
+    "city": "Kerrville",
+    "state": "TX",
+    "zip": "78028",
+    "country": "US"
+  },
+  "geo": {
+    "lat": 30.07296,
+    "lng": -99.2072559
+  },
+  "mapsUrl": "https://www.google.com/maps/place/Perkins+Electric/@30.07296,-99.2072559,17z",
+  "googleReviewsUrl": "https://www.google.com/maps/place/Perkins+Electric/@30.07296,-99.2072559,17z",
+  "rating": null,
+  "areaServed": [
+    "Kerrville",
+    "Ingram",
+    "Hunt",
+    "Center Point",
+    "Comfort",
+    "Bandera",
+    "Harper"
+  ],
+  "foundingYear": null
+}

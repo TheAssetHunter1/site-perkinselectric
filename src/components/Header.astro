@@ -1,0 +1,23 @@
+---
+import Icon from "./Icon.astro";
+import Wordmark from "./Wordmark.astro";
+import site from "../data";
+const tel = `tel:${site.phone.replace(/\D/g, "")}`;
+---
+<header class="bg-background/95 backdrop-blur-sm border-b border-border sticky top-0 z-50">
+  <div class="container">
+    <div class="flex items-center justify-between h-16">
+      <a href="/" class="shrink-0" aria-label={site.name}><Wordmark /></a>
+
+      <nav class="hidden md:flex items-center gap-6" aria-label="Main">
+        <a href="#services" class="text-muted-foreground hover:text-primary transition-colors">Services</a>
+        <a href="#reviews" class="text-muted-foreground hover:text-primary transition-colors">Reviews</a>
+        <a href="#contact" class="text-muted-foreground hover:text-primary transition-colors">Contact</a>
+      </nav>
+
+      <a href={tel} class="btn btn-sm bg-accent-glow text-accent-foreground font-semibold hover:opacity-90 shadow-sm">
+        <Icon name="phone" /><span class="hidden sm:inline">{site.phone}</span><span class="sm:hidden">Call</span>
+      </a>
+    </div>
+  </div>
+</header>

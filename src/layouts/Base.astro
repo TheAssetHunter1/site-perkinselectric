@@ -1,0 +1,87 @@
+---
+import "../styles/global.css";
+import site from "../data";
+
+interface Props {
+  title?: string;
+  description?: string;
+  noindex?: boolean;
+}
+const {
+  title = `${site.name} | ${site.tagline}`,
+  description = site.description,
+  noindex = false,
+} = Astro.props;
+
+const canonical = new URL(Astro.url.pathname, site.url).href;
+const ogImage = new URL("/og-image.jpg", site.url).href;
+
+const schema = {
+  "@context": "https://schema.org",
+  "@type": "Electrician",
+  "@id": `${site.url}/#business`,
+  name: site.name,
+  url: site.url,
+  image: ogImage,
+  logo: new URL("/icon-512.png", site.url).href,
+  description: site.description,
+  telephone: site.phone,
+  ...(site.email ? { email: site.email } : {}),
+  ...(site.foundingYear ? { foundingDate: String(site.foundingYear) } : {}),
+  address: {
+    "@type": "PostalAddress",
+    ...(site.address.streetDisplay ? { streetAddress: site.address.street } : {}),
+    addressLocality: site.address.city,
+    addressRegion: site.address.state,
+    postalCode: site.address.zip,
+    addressCountry: site.address.country,
+  },
+  geo: { "@type": "GeoCoordinates", latitude: site.geo.lat, longitude: site.geo.lng },
+  hasMap: site.mapsUrl,
+  areaServed: site.areaServed.map((name) => ({ "@type": "City", name: `${name}, ${site.address.state}` })),
+  openingHoursSpecification: site.hours
+    .filter((h) => h.opens)
+    .map((h) => ({ "@type": "OpeningHoursSpecification", dayOfWeek: h.days, opens: h.opens, closes: h.closes })),
+  hasOfferCatalog: {
+    "@type": "OfferCatalog",
+    name: "Electrical Services",
+    itemListElement: site.services.map((s) => ({
+      "@type": "Offer",
+      itemOffered: { "@type": "Service", name: s.title, description: s.description },
+    })),
+  },
+};
+---
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    {(noindex || site.demo) && <meta name="robots" content="noindex" />}
+    <link rel="icon" href="/favicon.ico" sizes="32x32" />
+    <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
+    <meta name="theme-color" content="#173066" />
+
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={site.name} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <script type="application/ld+json" set:html={JSON.stringify(schema)} />
+  </head>
+  <body class="min-h-screen bg-background font-sans antialiased">
+    <slot />
+  </body>
+</html>

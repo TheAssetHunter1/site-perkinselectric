@@ -1,0 +1,13 @@
+---
+// Inline Lucide icon, rendered at build time.
+interface Props { name: string; class?: string }
+const { name, class: className = "h-4 w-4" } = Astro.props;
+const icons = import.meta.glob("/node_modules/lucide-static/icons/*.svg", { query: "?raw", import: "default", eager: true }) as Record<string, string>;
+const raw = icons[`/node_modules/lucide-static/icons/${name}.svg`];
+if (!raw) throw new Error(`Unknown icon: ${name}`);
+const svg = raw
+  .replace(/<!--.*?-->\s*/s, "")
+  .replace(/class="[^"]*"/, `class="${className}" aria-hidden="true"`)
+  .replace(/\s(width|height)="24"/g, "");
+---
+<Fragment set:html={svg} />

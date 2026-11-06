@@ -1,0 +1,172 @@
+---
+import Icon from "./Icon.astro";
+import site from "../data";
+const tel = `tel:${site.phone.replace(/\D/g, "")}`;
+---
+<section id="contact" class="py-20">
+  <div class="container">
+    <div class="text-center mb-16">
+      <h2 class="text-4xl font-bold text-foreground mb-4">Get In Touch</h2>
+      <p class="text-xl text-muted-foreground max-w-3xl mx-auto">
+        Tell us what's going on and we'll get back to you with a time and a fair quote.
+        For anything urgent, calling is fastest.
+      </p>
+    </div>
+
+    <div class="grid lg:grid-cols-2 gap-12">
+      <div class="space-y-8">
+        <div class="card bg-gradient-card shadow-card-tech">
+          <div class="card-header">
+            <h3 class="card-title flex items-center gap-3">
+              <span class="bg-primary/10 p-2 rounded-lg"><Icon name="phone" class="h-5 w-5 text-primary" /></span>
+              <span>Call Us</span>
+            </h3>
+            <p class="card-description">Talk directly with Troy</p>
+          </div>
+          <div class="card-content">
+            <a href={tel} class="text-2xl font-semibold text-primary mb-2 hover:underline block">{site.phone}</a>
+            <p class="text-muted-foreground">Available during business hours for immediate assistance</p>
+          </div>
+        </div>
+
+        <div class="card bg-gradient-card shadow-card-tech">
+          <div class="card-header">
+            <h3 class="card-title flex items-center gap-3">
+              <span class="bg-primary/10 p-2 rounded-lg"><Icon name="map-pin" class="h-5 w-5 text-primary" /></span>
+              <span>Service Area</span>
+            </h3>
+            <p class="card-description">We come to you</p>
+          </div>
+          <div class="card-content">
+            <ul class="flex flex-wrap gap-2">
+              {site.areaServed.map((a) => (
+                <li class="rounded-full bg-secondary px-3 py-1 text-sm font-medium text-primary">{a}</li>
+              ))}
+            </ul>
+            <p class="text-muted-foreground text-sm mt-3">Not on the list? Call and ask. We cover most of Kerr County.</p>
+            {site.address.streetDisplay && <p class="text-sm mt-3 flex items-center gap-2"><Icon name="building-2" class="h-4 w-4 text-primary" /><a href={site.mapsUrl} target="_blank" rel="noopener" class="hover:underline">Shop: {site.address.streetDisplay}, {site.address.city}</a></p>}
+          </div>
+        </div>
+
+        <div class="card bg-gradient-card shadow-card-tech">
+          <div class="card-header">
+            <h3 class="card-title flex items-center gap-3">
+              <span class="bg-primary/10 p-2 rounded-lg"><Icon name="clock" class="h-5 w-5 text-primary" /></span>
+              <span>Business Hours</span>
+            </h3>
+          </div>
+          <div class="card-content">
+            <dl class="space-y-2 text-sm">
+              {site.hours.map((h) => (
+                <div class="flex justify-between gap-4">
+                  <dt class="text-muted-foreground">{h.label}:</dt>
+                  <dd class="font-medium">{h.display}</dd>
+                </div>
+              ))}
+            </dl>
+          </div>
+        </div>
+      </div>
+
+      <div class="card bg-gradient-card shadow-card-tech">
+        <div class="card-header">
+          <h3 class="card-title flex items-center gap-3">
+            <span class="bg-primary/10 p-2 rounded-lg"><Icon name="message-square" class="h-5 w-5 text-primary" /></span>
+            <span>Send Us a Message</span>
+          </h3>
+          <p class="card-description">Fill out the form below and we'll get back to you as soon as we can</p>
+        </div>
+        <div class="card-content">
+          <form id="contact-form" data-demo={site.demo ? "true" : "false"} action="/api/contact" method="POST" class="space-y-6" novalidate>
+            <div class="grid grid-cols-2 gap-4">
+              <div class="space-y-2">
+                <label class="label" for="firstName">First Name</label>
+                <input class="field h-10" id="firstName" name="firstName" placeholder="John" autocomplete="given-name" required />
+              </div>
+              <div class="space-y-2">
+                <label class="label" for="lastName">Last Name</label>
+                <input class="field h-10" id="lastName" name="lastName" placeholder="Doe" autocomplete="family-name" required />
+              </div>
+            </div>
+            <div class="space-y-2">
+              <label class="label" for="email">Email</label>
+              <input class="field h-10" id="email" name="email" type="email" placeholder="john@example.com" autocomplete="email" required />
+            </div>
+            <div class="space-y-2">
+              <label class="label" for="phone">Phone Number</label>
+              <input class="field h-10" id="phone" name="phone" type="tel" placeholder="(830) 555-0123" autocomplete="tel" />
+            </div>
+            <div class="space-y-2">
+              <label class="label" for="service">Service Needed</label>
+              <input class="field h-10" id="service" name="service" placeholder="e.g., Outlet not working, new ceiling fan, panel upgrade" required />
+            </div>
+            <div class="space-y-2">
+              <label class="label" for="message">Message</label>
+              <textarea class="field min-h-[80px]" id="message" name="message" rows="4" minlength="10" placeholder="Tell us about the job or the problem..." required></textarea>
+            </div>
+            <!-- Spam trap: hidden from people, bots fill it in -->
+            <div class="hidden" aria-hidden="true">
+              <label for="company">Company</label>
+              <input id="company" name="company" tabindex="-1" autocomplete="off" />
+            </div>
+
+            <p id="form-status" role="status" class="hidden rounded-md p-3 text-sm"></p>
+
+            <button type="submit" class="btn w-full bg-accent-glow text-accent-foreground font-semibold hover:opacity-90 shadow-sm disabled:opacity-50 disabled:pointer-events-none">
+              <span data-idle><Icon name="send" /></span>
+              <span data-busy class="hidden animate-spin"><Icon name="loader-circle" /></span>
+              Send Message
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.getElementById("contact-form") as HTMLFormElement;
+  const status = document.getElementById("form-status")!;
+  const button = form.querySelector("button[type=submit]") as HTMLButtonElement;
+  const showStatus = (ok: boolean, text: string) => {
+    status.textContent = text;
+    status.className = `rounded-md p-3 text-sm ${ok ? "bg-primary/10 text-primary" : "bg-destructive/10 text-destructive"}`;
+  };
+
+  const demo = form.dataset.demo === "true";
+
+  form.addEventListener("submit", async (e) => {
+    e.preventDefault();
+    if (!form.checkValidity()) {
+      form.reportValidity();
+      return;
+    }
+    button.disabled = true;
+    button.querySelector("[data-idle]")!.classList.add("hidden");
+    button.querySelector("[data-busy]")!.classList.remove("hidden");
+    try {
+      if (demo) {
+        await new Promise((r) => setTimeout(r, 600));
+        showStatus(true, "Demo preview: on the live site this message goes straight to Perkins Electric's inbox.");
+        form.reset();
+        return;
+      }
+      const res = await fetch(form.action, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: new FormData(form),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (!res.ok) throw new Error(data.error || "Something went wrong.");
+      showStatus(true, "Message sent! We'll get back to you as soon as we can.");
+      form.reset();
+    } catch (err) {
+      const phone = document.querySelector<HTMLAnchorElement>("a[href^='tel:']")?.textContent?.trim();
+      showStatus(false, `${(err as Error).message} Please try again or call us${phone ? ` at ${phone}` : ""}.`);
+    } finally {
+      button.disabled = false;
+      button.querySelector("[data-idle]")!.classList.remove("hidden");
+      button.querySelector("[data-busy]")!.classList.add("hidden");
+    }
+  });
+</script>
