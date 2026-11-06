@@ -44,7 +44,7 @@ Taken from the public Google listings (Nov 2026). **There are two Google listing
 ## Rules
 
 - Do not claim anything not confirmed (license, insurance, years in business, emergency/24-hour service).
-- Colors: charcoal `hsl(215 19% 17%)` primary, red accent (`bg-accent-glow`). Wordmark is text + Lucide `zap` icon (no logo yet).
+- Colors: charcoal `hsl(215 19% 17%)` primary, gold-yellow accent `hsl(45 95% 52%)` (Troy uses yellow in his marketing); deeper gold `accent-strong` for text on white (`bg-accent-glow`). Wordmark is text + Lucide `zap` icon (no logo yet).
 - Make each change its own commit with a clear message.
 
 ## Commands
@@ -59,3 +59,4 @@ npm run build    # outputs dist/
 
 - 2026-11-06: Demo built from the Moseley Electric mockup. Charcoal/red theme, Perkins services and Google reviews, shop address on contact card, no rating count, unconfirmed "licensed" wording removed, noindex.
 - 2026-11-06: Added Mike's Google review (remodel, permits); reviews now a 2x2 grid.
+- 2026-11-06: Accent changed from red to gold-yellow to match Troy's marketing; deeper gold for the wordmark on the white header.

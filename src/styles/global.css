@@ -13,12 +13,13 @@
   --color-secondary-foreground: hsl(222.2 47.4% 11.2%);
   --color-muted: hsl(220 14% 96%);
   --color-muted-foreground: hsl(215.4 16.3% 46.9%);
-  --color-accent: hsl(2 80% 52%);
-  --color-accent-foreground: hsl(0 0% 100%);
+  --color-accent: hsl(45 95% 52%);
+  --color-accent-foreground: hsl(215 25% 12%);
+  --color-accent-strong: hsl(40 95% 38%);
   --color-destructive: hsl(0 84.2% 60.2%);
   --color-border: hsl(214.3 31.8% 91.4%);
   --color-input: hsl(214.3 31.8% 91.4%);
-  --color-ring: hsl(2 80% 52%);
+  --color-ring: hsl(45 95% 52%);
 
   --radius-lg: 0.75rem;
   --radius-md: calc(0.75rem - 2px);
@@ -37,7 +38,7 @@
   background-image: linear-gradient(135deg, hsl(215 25% 8% / 0.95), hsl(215 19% 18% / 0.80));
 }
 @utility bg-accent-glow {
-  background-image: linear-gradient(135deg, hsl(4 85% 56%), hsl(356 78% 44%));
+  background-image: linear-gradient(135deg, hsl(48 98% 58%), hsl(42 92% 48%));
 }
 @utility bg-gradient-card {
   background-image: linear-gradient(180deg, hsl(0 0% 100%), hsl(220 14% 98%));
