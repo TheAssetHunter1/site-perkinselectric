@@ -25,6 +25,7 @@ Taken from the public Google listings (Nov 2026). **There are two Google listing
 - Crew named in reviews: Troy (owner), Roger, Jesus.
 - Services come from reviews and the Google services list: new-home wiring, HVAC breaker, EV charger, hot tub electrical, switch relocation, outlet & switch install, Ethernet/conduit pull.
 - Reviews are real Google reviews quoted word for word (shortened at sentence ends where Google truncates).
+- Includes Mike's own Google review (Nov 2026, remodel job, permits pulled with the City); spelling of "recommend" corrected and a period added.
 - No star rating number is shown on the site, because the two listings split the reviews.
 
 ## To confirm with Troy before going live
@@ -57,3 +58,4 @@ npm run build    # outputs dist/
 ## Change log
 
 - 2026-11-06: Demo built from the Moseley Electric mockup. Charcoal/red theme, Perkins services and Google reviews, shop address on contact card, no rating count, unconfirmed "licensed" wording removed, noindex.
+- 2026-11-06: Added Mike's Google review (remodel, permits); reviews now a 2x2 grid.
